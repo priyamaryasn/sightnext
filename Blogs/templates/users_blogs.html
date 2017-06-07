@@ -1,0 +1,88 @@
+<hr>
+<div class="container">
+<div class="row">
+</div>
+<div class="row">
+	<div class="col-md-9">
+		{% if request.user.username != user_name.name %}
+			<div class="col-md-12" style="">
+				
+					<h3> About </h3>
+			
+			</div>
+			<div class="col-md-12 col-sm-12 col-xs-12 blog_box1" style="height:100%">
+			<div style="margin:20px">
+				{{user.about}}
+				</div>
+			</div>
+		{% endif %}
+		<div class="col-md-12">
+				<h3> My blogs </h3>
+		</div>
+		{% for card in cards%}
+			{%if card.user.name%}
+				
+					{% if card.id|divisibleby:2%}
+								<div class="col-md-12 col-sm-12 col-xs-12 blog_box1" style="height:100%">
+							{% else %}
+								<div class="col-md-12 col-sm-12 col-xs-12 blog_box1" >
+							{% endif %}
+									<div class="bog_box_content"><a href="{% url 'cards:view_card' card.name %}">
+										<p><div>
+											<img src="/media/{{card.image}}" class="img-responsive2" >
+										</div></p></a>
+									
+
+										<div><a  href=""{% url 'cards:view_card' card.name %}"">
+										<p><h3>{{card.name}} </h3></p></a></div>
+										<p><div>{{card.desc|truncatewords:4|safe}}</div></p>
+										<p><div>
+										<a href=""{% url 'cards:view_card' card.name %}"" class="btn btn-primary" role="button">
+											View
+										</a>
+										</div></p>
+									</div>
+							
+								<hr>
+							</div>
+				
+			{%endif%}
+		{%endfor%}
+	</div>
+	<div class="col-md-3">
+		<div class="blog_box1" style="width: 100%; height: 17vw;">
+			<h4>Favourite Topics</h4>
+
+			<ul>
+			{% for item in user_cat %}
+				
+					<li><a href="{% url 'category:all_blogs' item.name %}"> {{item.name}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>	
+	</div>
+	<div class="col-md-3" style="float: right">
+		<div class="blog_box1" style="width: 100%;height: 17vw;">
+			<h4 style="">Followed By</h4>
+
+			<ul>
+			{% for user in user_followers %}
+				
+					<li><a href="{% url 'user' user.name %}"> {{user.name}}</a></li>
+			{% endfor %}
+			</ul>
+		</div>	
+	</div>
+	<div class="col-md-3" style="float: right">
+			<div class="blog_box1" style="width: 100%;height: 17vw;">
+				<h4 style="">Topics</h4>
+				<ul>
+				{% for cat in cats %}					
+						<li><a href="{{cat.get_absolute_url}}">{{cat.name}}</a></li>
+				{% endfor %}
+				<a href="{% url 'category:all_cat' %}">more...</a>
+				</ul>
+			</div>	
+		</div>
+</div>
+</div>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{%block content%}
+
+{{message}}
+{%if user.full_name%}
+<div class="container_head">
+<div class="container_head_profile blog_box1" style="border: transparent;">
+		<!--<h1>Hello {{user.userlink}}!!</h1>
+		<h3>Here is your account details...</h3>-->
+		<div class="profile_pic"> 
+			<img src="/media/{{user.profile_pic}}" width="400" height="400" style="border-radius:50%;height: 200px;width: 200px ">
+		</div>
+		<div class="profile_details">
+			<h3><p style="text-transform:uppercase">{{user.full_name}}</p></h3>
+			{% if request.user.username %}
+				{% if request.user.username != user_name.name %}
+					<form id="follow_user" action="{% url 'follow' user %}" method="POST">{%csrf_token%}
+						<button class="btn btn-grp"  type="submit" value='{{follow_button}}' name="follow">
+						{{follow_button}}
+						{%if follow_button == 'follow' %}
+							<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'></span></button>
+						{%else%}
+							<span class="glyphicon glyphicon-thumbs-down" aria-hidden='true'></span></button>
+						{%endif%}
+					</form>
+				{% else %}
+				 <a href="{% url 'show_all' user_name.name %}"> <button class="btn btn-grp">My jounal </button></a>
+				{%endif%}
+			{%else %}
+
+				<div class="popup" onclick="myFunction2()">
+				<button class="btn btn-grp" value='{{follow_button}}' name="follow">{{follow_button}}<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'></span></button>
+		  		<span class="popuptext" id="myPopupcomment">Login required!!</span>
+		  		</div>
+			{% endif %}
+		</div>
+</div>
+		{% if request.user.username == username%}
+		<br><br>	<a href="{% url 'change_password' request.user %}">Change Password</a>
+		{% endif %}
+
+
+
+		
+
+</div>
+
+		
+{%else%}
+	{{title}}
+	<a href="{% url 'profile_edit' request.user.username %}">update your profile</a>
+{%endif%}
+{% include 'users_blogs.html' %}
+{%endblock%}

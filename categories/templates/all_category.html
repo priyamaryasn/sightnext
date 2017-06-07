@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% url "category:all_blogs" name=cat.name %}
+{% block content %}
+<div class="container">
+	<div class="row" style="display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display:flex;flex-wrap: wrap;">
+	{% for cat in cats %}
+		<div class="col-md-3 col-sm-12 col-xs-12" style="margin-bottom: 20px">
+			<div class="blog_box1 " style="height:100%">
+				<div class="bog_box_content" style="text-align: center;" >
+					<a href="{{cat.get_absolute_url}}">
+					<p>
+					<div >
+						<img src="/media/{{cat.image}}" class="img-responsive" >
+					</div>
+					</p></a>
+					<div>
+						<a  href="{{cat.get_absolute_url}}">
+						<p><h3>{{cat.name}} </h3></p></a>
+					</div>
+					{% if request.user.username %}
+					<div>
+						<form id= "follow_category" action="/subscribe/sub/{{cat.name}}/" method="POST">{%csrf_token%}
+						<button class="btn btn-grp"  type="submit" value='{{follow_button}}' name="follow">
+						{% if cat in all_cat %}
+
+							unfollow
+						{% else %}
+							follow
+						{%endif%}
+						</button>
+						</form>
+					</div>
+					{% else %}
+							<div class="popup" onclick="myFunction5()">
+							<button class="btn btn-grp"  type="submit" value='{{follow_button}}' name="follow">follow</button>
+					  		<span class="popuptext" id="myPopupcatfollow">Login required!!</span>
+				  		</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	
+	{%endfor%}
+	</div>
+</div>	
+
+{% endblock content %}
+<form id= "follow_user" action="/subscribe/sub/{{cat.name}}/" method="POST">{%csrf_token%}
+						<button class="btn btn-grp"  type="submit" value='{{follow_button}}' name="follow">
+						{% if cat in all_cat %}
+
+							unfollow
+						{% else %}
+							follow
+						{%endif%}
+					</button>
+					</form>

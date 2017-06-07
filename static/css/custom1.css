@@ -1,0 +1,186 @@
+.all_body{
+	margin-top: 20px;
+	
+}
+.container_head{
+	margin:1vw 20vw ;
+	
+}
+.advert{
+	padding-right: 0px;
+	padding-left:0px;
+
+}
+body{
+	background-color: #fafafa !important;
+}
+img.img-responsive2 {
+    min-height: 100px;
+    min-width: 100px;
+    height: 150px;
+    width: 100%;
+}
+
+img.blog_head{
+	min-height: 20px;
+	min-width: 200px;
+	height:35vw;
+	width:100%;
+
+}
+.blog_box1{
+	border: 1px solid #bdc3c7;
+	margin-bottom: 20px;
+	display: table;
+	padding: 5px;
+	background-color: white;
+	width: 100%;
+	
+}
+
+.navbar-inverse {
+    background-image: linear-gradient(to bottom,#fafafa ,#fafafa);
+    border-color: white;
+    
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,0);
+    color: #424242;
+    font-weight: 200;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse:hover .navbar-nav>li>a:hover {
+    text-shadow: 0 -1px 0 rgba(0,0,0,0);
+    color: black;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a {
+    
+    background-image: linear-gradient(to bottom,#880E4F ,#880E4F);
+}
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 100;
+    line-height: 1.42857143;
+    color: #424242;
+    white-space: nowrap;
+}
+.dropdown-menu>li>a:hover {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 100;
+    line-height: 1.42857143;
+    color: black;
+    white-space: nowrap;
+}
+.container_head_profile{
+	display: flex;
+}
+.profile_pic{
+	flex:1;
+	order: 2;
+}
+.profile_details{
+	flex:4;
+	order: 1;
+	margin: auto;
+}
+
+@media (max-width: 650px){
+
+.container_head{
+	margin:1vw 3vw ;
+	
+}
+}
+.buttond{
+	display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border-radius: 4px;
+}
+@media (min-width: 768px){}
+.navbar-form .form-control {
+    
+    margin-right: -8px;
+}}
+
+.row2{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+
+
+
+
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}

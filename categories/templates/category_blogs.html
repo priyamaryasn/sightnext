@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row" style="display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display:flex;flex-wrap: wrap;">
+	{% for item in list %}
+		<div class="col-md-3 col-sm-12 col-xs-12" style="margin-bottom: 20px">
+			<div class="blog_box1 " style="height:100%">
+				<div class="bog_box_content" style="text-align: center;" >
+					<a href="{{item.get_absolute_url}}">
+					<p>
+					<div >
+						<img src="/media/{{item.image}}" class="img-responsive2" >
+					</div>
+					</p></a>
+					<div>
+						<a  href="{{item.get_absolute_url}}">
+						<p><h3>{{item.name}} </h3></p></a>
+					</div>
+					<p><div>{{item.desc|truncatechars:20|safe}}</div></p>
+								<p><div>
+								<a href="{{item.get_absolute_url}}" class="btn btn-primary" role="button">
+									View
+								</a>
+					</div></p>
+				</div>
+			</div>
+		</div>
+	
+	{%endfor%}
+	</div>
+</div>	
+{% endblock content %}
+<div class="bog_box_content" ><a href="{{card.get_absolute_url}}">
+								<p><div >
+									<img src="/media/{{card.image}}" class="img-responsive2" >
+								</div></p></a>
+								{{card.id}}
+							
+
+								<div ><a  href="{{card.get_absolute_url}}">
+								<p><h3>{{card.name}} </h3></p></a></div>
+								<p><div>{{card.desc|truncatechars:20|safe}}</div></p>
+								<p><div>
+								<a href="{{card.get_absolute_url}}" class="btn btn-primary" role="button">
+									View
+								</a>
+								</div></p>
+							</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Welcome to Sightnext</title>
+    {% include 'base_css.html'%}
+    {%block head_content%}
+    {%endblock head_content%}
+</head>
+<body>
+<div class="container-fluid all_body" style="padding-left: 0px;padding-right: 0px">
+
+{%block content%}
+{%endblock content%}
+</div>
+{% include 'base_ajax.html'%}
+</body>
+</html>

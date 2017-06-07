@@ -1,0 +1,33 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Welcome to Sightnext</title>
+    {% include 'base_css.html'%} 
+    {% include 'base_js.html'%}
+</head>
+<body>
+    <!-- NAVBAR-->
+    
+    {%include "navbar.html"%}
+    <!-- NAVBAR ENDS-->
+    
+    <!--BODY -->
+    <div>
+            {%block content%}
+            {%endblock%}
+    </div>     
+<!--BODY ENDS-->
+    {% include 'custom_js.html' %}
+    {% include 'custom_ajax.html' %}
+
+    </body>
+
+</html>
+ 

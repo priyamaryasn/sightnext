@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{%block content%}
+
+<div>		
+	<div class="container_head">
+		{%if card%}
+			<!-- <a href="/users/{{card.user.name}}">
+				<img src="/media/{{card.user.user_info.profile_pic}}" style="width:80px; height:80px;border-radius: 50%" >
+				<b><strong>{{card.user.name}}</strong></b></a><br>
+			</a>
+			 -->
+		<div>
+			<div>
+				<img src="/media/{{card.user.user_info.profile_pic}}" style="width:50px; height:50px;border-radius: 50%;float:left;" >
+			</div>
+			<div>
+				<a href="/users/{{card.user.name}}" style=" font-size: 18px">&nbsp{{card.user.user_info.full_name}}</a>
+				
+				<i><br><b>&nbspUploaded On:- {{card.upload_date|date}}  
+				| {{card.likes}} Likes </b></i>
+				{% if request.user.username == card.user.name %}
+					| <a href="{% url 'cards:edit' card.id %}"> Edit </a>
+				{% endif %}
+			</div>
+		</div><br>
+	</div>
+		<div style="text-align: center">		
+
+				{%if card.image%}
+					<p><img src="/media/{{card.image}}" class="blog_head" style="width:100%;">
+					</p>
+				{%endif%}
+		</div>
+		<div class="container_head">
+				<h1>{{card.name}}</h1>
+				<br> {{card.desc|safe}}
+						
+			{%else%}
+				{{message}}	
+			{%endif%}
+			<div >
+				{% if request.user.username %}
+				<div class="col-md-2" style="margin-right: 30px;">
+				<form id="journal_add" action="/journal/add/{{card.name}}/" method="POST">{%csrf_token%}	
+					<button class="btn btn-grp"  type="submit" value='{{button_text}}' name="like">	{{button_text}}</button>
+				</form>
+				</div>
+				<div class= "col-md-2">
+				<form id="like_card" action="/likes/like/{{card.name}}/" method="POST">{%csrf_token%}
+					<button class="btn btn-grp"  type="submit" value='{{like_button}}' name="like">	{{like_button}}
+					{%if like_button == 'like' %}
+						<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'>
+					{%else%}
+						<span class="glyphicon glyphicon-thumbs-down" aria-hidden='true'>
+			
+					{%endif%}{{card.likes}}</span></button>
+				</form>
+				</div>
+				{% else %}
+				<div class="popup" onclick="myFunction3()">
+					<button class="btn btn-grp"  type="submit" value='{{button_text}}' name="like">	{{button_text}}</button>
+					<span class="popuptext" id="myPopupjournal">Login required!!</span>
+				</div>
+
+					<div class="popup" onclick="myFunction()">
+					<button class="btn btn-grp"  type="submit" value='{{like_button}}' name="like">	{{like_button}} &nbsp<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'></span></button>
+	  					<span class="popuptext" id="myPopup">Login required!!</span>{{card.likes}}
+					
+					</div>
+				{% endif %}	
+			</div>
+
+		</div>
+		<br><br>
+	<div class="container_head">	
+				{% if request.user.username %}<p>
+					<form action="/comments/comment/{{card.name}}/" method="POST">{%csrf_token%}
+					<input type="text" id="comm" class="form-control" placeholder="comment" name="comm" required >
+					<input class="btn btn-default"  type="submit" value="comment">
+					</form>
+					</p>
+					<br>
+				{%else%}
+					<input type="text" id="comm" class="form-control" placeholder="comment" name="comm" required >
+					<div class="popup" onclick="myFunction2()">
+						<input class="btn btn-default"  type="submit" value="comment"></span>
+		  				<span class="popuptext" id="myPopupcomment">Login required!!</span>
+					
+					</div>
+					
+				{% endif %}
+				<br>
+				All Comments | {{comments.count}}
+				<br>
+				<br>
+				{%for comment in comments %}
+						<div class="panel panel-default">
+		  					<div class="panel-heading">By: {{comment.user.full_name}}&nbsp &nbsp
+		  					<img src="/media/{{comment.user.profile_pic}}" style="width:25px; height:25px;border-radius: 50%" > 
+
+		  				</div>
+	  					<div class="panel-body">{{comment.comments}}
+	   							 
+	  					</div>
+ 						</div>
+					
+				{%endfor%}
+
+				{{likes.user}}
+	</div>
+</div>	
+
+
+
+{%endblock%}
+
+
+
+
+
+
+

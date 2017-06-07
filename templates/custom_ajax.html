@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	
+
+	$(document).on('submit','#follow_user',function(e){
+		e.preventDefault();
+		$.ajax({
+			method:'POST',
+			url:/follower/{{username}}/,
+
+		});
+	});
+
+
+
+
+	$(document).on('submit','#journal_add',function(e){
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:/journal/add/{{card.name}}/,
+
+		});
+	});
+
+	$(document).on('submit','#like_card',function(e){
+		e.preventDefault();
+		$.ajax({
+			type:'POST',
+			url:/likes/like/{{card.name}}/,
+
+		});
+	});
+</script>

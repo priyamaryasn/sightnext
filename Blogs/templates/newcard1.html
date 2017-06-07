@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<h1> {{message}} </h1>
+	<div class="row">
+		<form class="form-signin" action="{%url "login" %}" method="POST">
+					{% csrf_token %}
+					
+			        <label  class="sr-only">Name</label>
+			        <input type="text" id="inputEmail" class="form-control" placeholder="Name" name="name" required autofocus>
+			        <label for="text" class="sr-only">Password</label>
+			        <input type="text" id="inputPassword" class="form-control" placeholder="Password" name="desc" required>
+			        		
+					<input class="btn btn-primary" type="submit" value="Log In">
+					<a class="btn btn-primary" href='{%url "signup"%}' role="button" >SignUp</a>
+					
+				</form>
+	</div>
+</div>
+{% endblock content %}

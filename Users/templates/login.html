@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+
+<div class="container ">
+<strong><i>{{message}}</i></strong>
+	<div class="row">
+		<div class="col-md-10">
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="blog_box1">
+					
+						{%if user%}{%csrf_token%}
+								<h1>One user is alredy logged in.. Please logout first</h1>
+								<a class="btn btn-primary" href='{%url "logout"%}' role="button" >Logut</a>
+						{%else%}
+
+							<form class="form-signin" action="{%url 'login' %}" method="POST">
+								{% csrf_token %}
+								<h2 class="form-signin-heading">Please Sign In</h2>
+						        <label  class="sr-only">Name</label>
+						        <input type="text" id="inputEmail" class="form-control" placeholder="Name" name="username" required value="Username">
+						        <br>
+						        <label for="inputPassword" class="sr-only">Password</label>
+						        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="password" required><br>
+						        		
+								<input class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">
+								
+								
+							</form>
+						{%endif%}<br>
+						<strong>OR</strong><br><br>
+						<a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary">Login with Facebook</a>&nbsp
+						<a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary">Login with Google</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="blog_box1" style="">
+						{% include "register.html" %}
+					</div>
+				</div>
+		</div>
+	</div>	
+</div>
+	
+<b><i>{{status}}</i></b>
+
+
+
+
+
+
+{% endblock content %}
+
+
