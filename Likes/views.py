@@ -7,14 +7,14 @@ from .models import CardLikes
 
 # Create your views here.
 
-
+                                                    
 @login_required(login_url="/users/login")
 def likes(request, name):
     # import ipdb; ipdb.set_trace()
 
     if request.method == "POST":
 
-            card = Cards.objects.get(name=name)
+            card = Cards.objects.get(slug=name)
             user = request.user
             user = UserProfile.objects.get(name=user)
 

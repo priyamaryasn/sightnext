@@ -299,6 +299,7 @@ def user(request, username):
         user_cat=user_cat.cat.all()
         user_followers=Followers.objects.get(user=user_name)
         user_followers = user_followers.followed_by.all()
+        cats = Categories.objects.all()[0:7]
         show_cards=[]
         for card in cards:
             if card.user.name == username:
@@ -322,6 +323,7 @@ def user(request, username):
                     "cards":show_cards,
                     "user_cat":user_cat,
                     "user_followers":user_followers,
+                    "cats":cats,
             }
             context.update(csrf(request))
             return render(request, "user.html", context)

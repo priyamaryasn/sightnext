@@ -6,7 +6,7 @@ from .forms import CardsForm
 
 class CardsAdmin(admin.ModelAdmin):
 	form = CardsForm
-	list_display = ['__str__', 'user',"upload_date"]
+	list_display = ['__str__', 'user',"upload_date","slug"]
 	list_display_links = ['user',"upload_date",'__str__']
 	search_fields = ['name',"desc"]
 	class Meta:

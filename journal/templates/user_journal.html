@@ -2,6 +2,7 @@
 {% block content %}
 
 <div class="container">
+{% if user_journal %}
 	{% for card in user_journal %}
 		<div class="col-md-4 col-sm-12 col-xs-12 " >
 			
@@ -29,5 +30,13 @@
 		</div>
 		
 	{% endfor %}
-</div><
+{% else %}
+	<div >
+		<h1> You have not added any blogs to your journal till now.</h1>
+		<div >
+			<h2> Goto <a href="{% url 'home' %}">blogs page</a> now!!</h2>
+		</div>
+		{% endif %}
+	</div>
+</div>
 {% endblock content %} 

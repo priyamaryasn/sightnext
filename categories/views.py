@@ -22,8 +22,8 @@ def all_cat(request):
 	return render(request,"all_category.html",context)
 
 def all_blogs(request,name):
-	context={}
 	#import ipdb; ipdb.set_trace()
+	context={}
 	instance = get_object_or_404(Categories,name=name)
 	blog_list = BlogsCategory.objects.get(category=instance)
 	blog_list = blog_list.blogs.all()
@@ -32,4 +32,3 @@ def all_blogs(request,name):
 	}
 	context.update(csrf(request))
 	return render(request,"category_blogs.html",context)
-

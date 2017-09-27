@@ -51,7 +51,10 @@ INSTALLED_APPS = [
     "FollowCategory",
     'social_django',
 ]
-
+CONTEXT_PROCESSORS=(
+    'django.core.context_processors.request',
+    
+)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -204,13 +207,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR + '/media/')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+FROALA_EDITOR_OPTIONS={
+    'dragInline': True,
+}
+FROALA_EDITOR_PLUGINS = ('colors', 'font_family','image', 'quote','video')
 
-#FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier' ,'code_view', 'colors', 'draggable', 'emoticons',
- #       'entities', 'file', 'font_family', 'font_size', 'fullscreen', 'image_manager', 'image', 'inline_style',
-  #      'line_breaker', 'link', 'lists', 'paragraph_format', 'paragraph_style', 'quick_insert', 'quote', 'save', 'table',
-   #     'url', 'video')
-
-
+FROALA_EDITOR_THEME= 'dark'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "dev.facelook@gmail.com"
 EMAIL_HOST_PASSWORD = 'devdevdev'

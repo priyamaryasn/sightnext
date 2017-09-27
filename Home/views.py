@@ -2,10 +2,11 @@ from django.shortcuts import render
 from Users.models import UserProfile,UserProfileInfo
 from followers.models import Followers
 from Comments.models import Comment
-from FollowCategory.models import CategoryFollowers
+from FollowCategory.models import CategoryFollowers,BlogsCategory
 from Likes.models import CardLikes
 from journal.models import Journal
 from django.contrib.auth.models import User
+from categories.models import Categories
 
 # Create your views here.
 

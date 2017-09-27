@@ -9,6 +9,7 @@ from categories.models import Categories
 from Comments.models import Comment
 from Likes.models import CardLikes
 from .forms import CardsForm
+from FollowCategory.models import BlogsCategory
 from journal.models import Journal
 
 # Create your views here.
@@ -19,7 +20,7 @@ def all_cards(request):
     """This, function show all cards."""
     #import ipdb; ipdb.set_trace()
     cards = Cards.objects.all()
-    cats=Categories.objects.all()
+    cats=Categories.objects.all()[0:7]
     
 
     paginator = Paginator(cards, 20)
@@ -34,8 +35,8 @@ def all_cards(request):
         cards = paginator.page(paginator.num_pages)
     context = {
         'cards': cards,
-        "cats":cats
-
+        "cats":cats,
+        "button_text": "button_text",
     }
     context.update(csrf(request))
 
@@ -51,7 +52,7 @@ def view_card(request, name):
     if str(request.user) != "AnonymousUser":
         user = request.user
         user = UserProfile.objects.get(name=user)
-        card = get_object_or_404(Cards,name=name)
+        card = get_object_or_404(Cards,slug=name)
         comment = card.name
         comment = Comment.objects.filter(comment_on_card=card)
        # comment_user = Comment.objects.get(comment_on_card=card)
@@ -96,7 +97,7 @@ def view_card(request, name):
                 return render(request, 'viewcard.html', context)
     else:
         user = request.user
-        card = get_object_or_404(Cards,name=name)
+        card = get_object_or_404(Cards,slug=name)
         comment = card.name
         comment = Comment.objects.filter(comment_on_card=card)
         like_button = 'like'
@@ -146,13 +147,21 @@ def new_card(request):
         user = UserProfile.objects.get(user=user)   
 
         if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = user
-            instance.save()
+            instance = form.save( user)
+            form.save_m2m()
+            name=instance.slug
             context = {
                 'message': "Card is Saved",
                 
             }
+            blog=Cards.objects.get(slug=name)
+            for item in blog.blog_category.all():
+                category_blog=Categories.objects.get(name=item)
+                category_blog.blog_count+=1 
+                category_blog.save()
+                blog_category=BlogsCategory.objects.get(category=category_blog)
+                blog_category.blogs.add(blog)
+
 
     else:
         

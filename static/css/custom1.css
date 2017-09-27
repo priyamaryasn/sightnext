@@ -13,6 +13,11 @@
 }
 body{
 	background-color: #fafafa !important;
+    letter-spacing: .5px;
+    
+    font-family: OpenSans-Regular,sans-serif;
+    line-height: 1.5;
+
 }
 img.img-responsive2 {
     min-height: 100px;
@@ -24,23 +29,39 @@ img.img-responsive2 {
 img.blog_head{
 	min-height: 20px;
 	min-width: 200px;
-	height:35vw;
-	width:100%;
-
-}
-.blog_box1{
-	border: 1px solid #bdc3c7;
-	margin-bottom: 20px;
-	display: table;
-	padding: 5px;
-	background-color: white;
-	width: 100%;
 	
-}
 
+}
+.blog_box1 {
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    border: 1px solid #e9e9e9;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    max-height: 400px;
+    min-height: 400px;
+}
+.blog_box1 a{
+    font-size: 14px;
+    font-weight: 800;
+}
+.navbar {
+    border-radius: 0;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 0;
+}
 .navbar-inverse {
-    background-image: linear-gradient(to bottom,#fafafa ,#fafafa);
+    background-image: linear-gradient(to bottom,white ,white);
     border-color: white;
+    border-bottom: 3px solid #880e4f;
     
 }
 
@@ -56,6 +77,9 @@ img.blog_head{
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a {
     
     background-image: linear-gradient(to bottom,#880E4F ,#880E4F);
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: grey;
 }
 .dropdown-menu>li>a {
     display: block;
@@ -183,4 +207,36 @@ img.blog_head{
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+ul{
+    list-style-type: none;
+}
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: url('../fonts/OpenSans-Regular.ttf');
+}
+.sides{
+    padding: 0px 0px 0px 10px;
+}
+.froala p{
+ visibility: hidden;
+}
+.froala img{
+    margin-left: -17px;
+    min-width: 100%;
+    visibility: visible;
+}
+
+.side_bar {
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    border: 1px solid #e9e9e9;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    max-height: 400px;
+    
 }

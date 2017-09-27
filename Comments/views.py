@@ -12,7 +12,7 @@ def write_comment(request, name):
     context = {}
 
     if request.method == 'POST':
-        card = Cards.objects.get(name=name)
+        card = Cards.objects.get(slug=name)
         user = request.user
         user = UserProfile.objects.get(name=user)
         user=UserProfileInfo.objects.get(userlink=user)

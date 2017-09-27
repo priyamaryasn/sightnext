@@ -29,7 +29,7 @@
 		<div style="text-align: center">		
 
 				{%if card.image%}
-					<p><img src="/media/{{card.image}}" class="blog_head" style="width:100%;">
+					<p><img src="/media/{{card.image}}" class="blog_head" >
 					</p>
 				{%endif%}
 		</div>
@@ -43,12 +43,12 @@
 			<div >
 				{% if request.user.username %}
 				<div class="col-md-2" style="margin-right: 30px;">
-				<form id="journal_add" action="/journal/add/{{card.name}}/" method="POST">{%csrf_token%}	
+				<form id="journal_add" action="/journal/add/{{card.slug}}/" method="POST">{%csrf_token%}	
 					<button class="btn btn-grp"  type="submit" value='{{button_text}}' name="like">	{{button_text}}</button>
 				</form>
 				</div>
 				<div class= "col-md-2">
-				<form id="like_card" action="/likes/like/{{card.name}}/" method="POST">{%csrf_token%}
+				<form id="like_card" action="/likes/like/{{card.slug}}/" method="POST">{%csrf_token%}
 					<button class="btn btn-grp"  type="submit" value='{{like_button}}' name="like">	{{like_button}}
 					{%if like_button == 'like' %}
 						<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'>
@@ -76,7 +76,7 @@
 		<br><br>
 	<div class="container_head">	
 				{% if request.user.username %}<p>
-					<form action="/comments/comment/{{card.name}}/" method="POST">{%csrf_token%}
+					<form action="/comments/comment/{{card.slug}}/" method="POST">{%csrf_token%}
 					<input type="text" id="comm" class="form-control" placeholder="comment" name="comm" required >
 					<input class="btn btn-default"  type="submit" value="comment">
 					</form>

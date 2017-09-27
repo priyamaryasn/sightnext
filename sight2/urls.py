@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^journal/', include('journal.urls')),
     url(r'^categories/',include('categories.urls',namespace="category")),
     url(r'^subscribe/',include('FollowCategory.urls',namespace="FollowCategory")),
-    url(r'^copy/$',FollowCategory.views.checko),
+    # url(r'^copy/$',FollowCategory.views.checko),
     url(r'^$', Blogs.views.all_cards, name="home"),
     url(r'^about/$', Users.views.about, name="about"),
     url(r'^contact/$', Users.views.contact, name="contact"),

@@ -68,7 +68,7 @@ def add_single(request,name):
 		user=request.user
 		user = UserProfile.objects.get(user=user)
 		user_journal = Journal.objects.get(user=user)
-		card=Cards.objects.get(name=name)
+		card=Cards.objects.get(slug=name)
 		if user.my_journal.filter(collection=card).exists():
 			context = {
 				"button_text": "delete"

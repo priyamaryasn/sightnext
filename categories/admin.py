@@ -4,6 +4,7 @@ from .models import Categories
 
 class catAdmin(admin.ModelAdmin):
 	search_fields=["name"]
+	list_display=["__str__","blog_count","user_count"]
 	class Meta:
 		model=Categories
 
